@@ -33,8 +33,8 @@ nn.fit(X_training,y_training)
 
 # <codecell>
 
-n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*30,289*31)])
-n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*30+1,289*31+1)])
+n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*400,289*410)])
+n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)])
 nn.score(n_sample2,n_test2)
 
 # <codecell>
