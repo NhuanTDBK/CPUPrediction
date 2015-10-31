@@ -13,7 +13,7 @@ from sknn.platform import cpu64
 
 # <codecell>
 
-raw_data = pd.read_csv("/home/nhuan/MyWorking/tpds-2012-workload.csv");
+raw_data = pd.read_csv("tpds-2012-workload.csv");
 nn = Regressor(
     layers=[
         Layer("Rectifier", units=10),
