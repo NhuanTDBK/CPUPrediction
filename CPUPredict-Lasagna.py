@@ -15,18 +15,24 @@ from lasagne.nonlinearities import rectify
 from nolearn.lasagne import NeuralNet
 
 #Init data training
+print "Reading file......"
 raw_data = pd.read_csv("tpds-2012-workload.csv");
 n_row = raw_data.shape[0]
 n_input = 11
 data = raw_data["Utilization"]
+print "Generate X_traing, y_traing"
+print "X_training loading..."
 X_training = np.asarray([[data[i] for i in range(1,n_input)]
              for t in np.arange(n_input-1,n_row)])
+print "y_training loading..."
 y_training = data[n_input-1:]
 
+print "Multi Layer Perceptron..."
 #Build layer for MLP
 l_in = ls.layers.InputLayer(shape=(None,10),input_var=None)
 l_hidden = ls.layers.DenseLayer(l_in,num_units=10,nonlinearity=ls.nonlinearities.rectify)
 network = l_out = ls.layers.DenseLayer(l_hidden,num_units=1)
+print "Neural network initialize"
 #Init Neural net
 net1 = NeuralNet(
     layers=network,
@@ -39,5 +45,6 @@ net1 = NeuralNet(
     verbose=1,
 )
 #
+print "Training time!!!!!....."
 net1.fit(X_training,y_training)
 net1.save_params_to("saveNeuralNetwork.tdn")
