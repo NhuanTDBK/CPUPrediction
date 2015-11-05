@@ -13,21 +13,18 @@ from lasagne.layers import InputLayer, DenseLayer
 from lasagne.updates import nesterov_momentum
 from lasagne.nonlinearities import rectify
 from nolearn.lasagne import NeuralNet
-
+from __init__ import *
 #Init data training
 print "Reading file......"
-raw_data = pd.read_csv("tpds-2012-workload.csv");
-n_row = raw_data.shape[0]
-n_input = 11
-data = raw_data["Utilization"]
-print "Generate X_training, y_training"
-print "X_training loading..."
-X_training = np.asarray([[data[i] for i in range(1,n_input)]
-             for t in np.arange(n_input-1,n_row-1)])
-print "y_training loading..."
-y_training = data[n_input:]
+X_training, y_training = get_training()
 if(X_training.shape[0]!=y_training.shape[0]):
     print "X_training shape must match y_training shape"
+print "Generate X_test and y_test"
+n_input = 11
+print "X_test..."
+n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*400,289*410)])
+print "y_test..."
+n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)])
 print "Multi Layer Perceptron..."
 #Build layer for MLP
 l_in = ls.layers.InputLayer(shape=(None,10),input_var=None)
@@ -49,3 +46,7 @@ net1 = NeuralNet(
 print "Training time!!!!!....."
 net1.fit(X_training,y_training)
 net1.save_params_to("saveNeuralNetwork.tdn")
+print "Score rate = "
+print net1.score(n_sample2,n_test2)
+print net1.predict(n_sample2)[0:2]
+
