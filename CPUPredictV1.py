@@ -31,7 +31,7 @@ X_training = np.asarray([[data[i] for i in range(1,n_input)]
              for t in np.arange(n_input-1,n_row-1)])
 print "y_training loading..."
 y_training = data[n_input:]
-if(X_training.shape[0]!=y_training.shape[0])
+if(X_training.shape[0]!=y_training.shape[0]):
     print "X_training shape must match y_training shape"
 # <codecell>
 print "Training time!!!!"
