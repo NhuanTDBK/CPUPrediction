@@ -1,0 +1,50 @@
+No handlers could be found for logger "sknn"
+No handlers could be found for logger "sknn"
+Reading file......
+Generate X_traing, y_traing
+X_training loading...
+y_training loading...
+Training time!!!!
+Initializing neural network with 2 layers, 10 inputs and 1 outputs.
+  - Dense: [1;97mRectifier [0m Units:  [1;97m10  [0m
+  - Dense: [1;97mLinear    [0m Units:  [1;97m1   [0m
+
+Training on dataset of 1,265,462 samples with 13,920,082 total size.
+  - Terminating loop after 30 total iterations.
+
+Epoch    Validation Error      Time
+-----------------------------------
+    1           N/A          407.9s
+    2           N/A          410.2s
+    3           N/A          421.4s
+    4           N/A          413.3s
+    5           N/A          412.7s
+    6           N/A          421.6s
+    7           N/A          411.2s
+    8           N/A          416.4s
+    9           N/A          419.9s
+   10           N/A          412.1s
+   11           N/A          413.4s
+   12           N/A          416.2s
+   13           N/A          410.6s
+   14           N/A          413.0s
+   15           N/A          409.9s
+   16           N/A          408.4s
+   17           N/A          406.4s
+   18           N/A          410.1s
+   19           N/A          409.5s
+   20           N/A          411.2s
+   21           N/A          411.3s
+   22           N/A          408.5s
+   23           N/A          409.3s
+   24           N/A          409.1s
+   25           N/A          411.1s
+   26           N/A          406.6s
+   27           N/A          409.9s
+   28           N/A          408.3s
+   29           N/A          411.3s
+   30           N/A          407.6s
+
+Terminating after specified 30 total iterations.
+-0.264769987022
+Saving variable nn

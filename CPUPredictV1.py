@@ -18,7 +18,8 @@ nn = Regressor(
         Layer("Linear")],
     learning_rate=0.02,
     n_iter=30,
-    debug=True)
+    debug=True,
+    verbose=1)
 print "Reading file......"
 raw_data = pd.read_csv("tpds-2012-workload.csv");
 n_row = raw_data.shape[0]
@@ -32,10 +33,7 @@ print "y_training loading..."
 y_training = data[n_input-1:]
 
 # <codecell>
-
-X_training = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)]
-             for t in np.arange(n_input-1,n_range+5)])
-y_training = np.asarray([raw_data.ix[t][4] for t in np.arange(n_input-1,n_range+5)])
+print "Training time!!!!"
 nn.fit(X_training,y_training)
 
 #
@@ -60,4 +58,6 @@ print nn.score(n_sample2,n_test2)
 #
 # # <codecell>
 #
+print "Saving variable nn"
+pickle.dump(nn,open('nn.pkl','wb'))
 
