@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "DemoGeneticAlgorithm.py", line 23, in <module>
+    for t in np.arange(9,raw_data.shape[0]-1)])
+  File "/usr/lib/python2.7/dist-packages/pandas/core/indexing.py", line 56, in __getitem__
+    return self._getitem_axis(key, axis=0)
+  File "/usr/lib/python2.7/dist-packages/pandas/core/indexing.py", line 758, in _getitem_axis
+    return self._get_label(key, axis=axis)
+  File "/usr/lib/python2.7/dist-packages/pandas/core/indexing.py", line 70, in _get_label
+    return self.obj._xs(label, axis=axis, copy=True)
+  File "/usr/lib/python2.7/dist-packages/pandas/core/generic.py", line 1297, in xs
+    loc = self.index.get_loc(key)
+  File "/usr/lib/python2.7/dist-packages/pandas/core/index.py", line 1017, in get_loc
+    return self._engine.get_loc(_values_from_object(key))
+  File "index.pyx", line 129, in pandas.index.IndexEngine.get_loc (pandas/index.c:3620)
+  File "index.pyx", line 139, in pandas.index.IndexEngine.get_loc (pandas/index.c:3404)
+KeyError: -1

@@ -14,15 +14,15 @@ T = theano.tensor
 from sklearn.metrics import mean_squared_error
 import pickle as pkl
 from math import sqrt
-raw_data = pd.read_csv("/home/nhuan/MyWorking/tpds-2012-workload.csv");
+raw_data = pd.read_csv("tpds-2012-workload.csv");
 
 # <codecell>
 
 params = [100, 0.3, 250,10,20]
 X_training = np.asarray([[raw_data.ix[t-i][4] for i in range(1,11)]
-             for t in np.arange(10,1100)])
+             for t in np.arange(9,raw_data.shape[0]-1)])
 y_training = np.asarray([raw_data.ix[t][4] 
-             for t in np.arange(10,1100)])
+             for t in np.arange(10,raw_data.shape[0])])
 # init pop size, mut rate, number of generation, chromoesome length, winner per gen]
 fan_in = fan_out = 10
 
@@ -71,7 +71,7 @@ class GA:
         return np.sum(np.abs(y-hThetaX))
 
 # <codecell>
-
+print "Training...."
 ga = GA(raw_data,params,fan_in,fan_out)
 theta_in = ga.fit(X_training,y_training)
 pred_y = ga.sigmoid(np.dot(X_training,theta_in.T))
@@ -92,10 +92,9 @@ theta = theta_in #0.06
 theta
 
 # <codecell>
-
+print "Saving"
 pkl.dump(theta,open('save.p', 'wb'))
 t = pkl.load(open('save.p', 'rb'))
-t
 
 # <codecell>
 
