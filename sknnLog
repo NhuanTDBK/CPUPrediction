@@ -2,47 +2,9 @@ Reading file......
 Generate X_traing, y_traing
 X_training loading...
 y_training loading...
+Generate X_test and y_test
+X_test...
+y_test...
 Training time!!!!
-Initializing neural network with 2 layers, 10 inputs and 1 outputs.
-  - Dense: [1;97mRectifier [0m Units:  [1;97m10  [0m
-  - Dense: [1;97mLinear    [0m Units:  [1;97m1   [0m
-
-Training on dataset of 1,265,461 samples with 13,920,071 total size.
-  - Terminating loop after 30 total iterations.
-
-Epoch    Validation Error      Time
------------------------------------
-    1           N/A          412.4s
-    2           N/A          412.1s
-    3           N/A          410.3s
-    4           N/A          413.5s
-    5           N/A          415.7s
-    6           N/A          416.5s
-    7           N/A          420.0s
-    8           N/A          411.8s
-    9           N/A          416.7s
-   10           N/A          413.6s
-   11           N/A          412.8s
-   12           N/A          412.5s
-   13           N/A          415.9s
-   14           N/A          414.8s
-   15           N/A          412.3s
-   16           N/A          416.1s
-   17           N/A          421.6s
-   18           N/A          422.5s
-   19           N/A          414.5s
-   20           N/A          414.3s
-   21           N/A          415.4s
-   22           N/A          411.6s
-   23           N/A          411.7s
-   24           N/A          410.2s
-   25           N/A          413.6s
-   26           N/A          411.2s
-   27           N/A          412.0s
-   28           N/A          410.4s
-   29           N/A          412.8s
-   30           N/A          411.2s
-
-Terminating after specified 30 total iterations.
--0.278309538733
+0.17955933709
 Saving variable nn
