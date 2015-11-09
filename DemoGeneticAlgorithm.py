@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
 
-# <codecell>
+# coding: utf-8
+
+# In[1]:
 
 from __future__ import division
 import os
@@ -14,19 +14,23 @@ T = theano.tensor
 from sklearn.metrics import mean_squared_error
 import pickle as pkl
 from math import sqrt
-raw_data = pd.read_csv("tpds-2012-workload.csv");
+from __init__ import *
 
-# <codecell>
+
+# In[2]:
 
 params = [100, 0.3, 250,10,20]
-X_training = np.asarray([[raw_data.ix[t-i][4] for i in range(1,11)]
-             for t in np.arange(9,raw_data.shape[0]-1)])
-y_training = np.asarray([raw_data.ix[t][4] 
-             for t in np.arange(10,raw_data.shape[0])])
+X_training, y_training = get_training()
 # init pop size, mut rate, number of generation, chromoesome length, winner per gen]
 fan_in = fan_out = 10
 
-# <codecell>
+
+# In[ ]:
+
+
+
+
+# In[6]:
 
 class GA:
     def __init__(self,dataset,params,fan_in,fan_out):
@@ -70,32 +74,39 @@ class GA:
         hThetaX = np.array(self.sigmoid(np.dot(X,theta)))
         return np.sum(np.abs(y-hThetaX))
 
-# <codecell>
-print "Training...."
+
+# In[7]:
+
 ga = GA(raw_data,params,fan_in,fan_out)
-theta_in = ga.fit(X_training,y_training)
-pred_y = ga.sigmoid(np.dot(X_training,theta_in.T))
-print sqrt(mean_squared_error(y_training,pred_y))
+result = 1
+for ty in range(0,10000):
+    theta_in = ga.fit(X_training,y_training)
+    pred_y = ga.sigmoid(np.dot(X_training,theta_in.T))
+    tmp = sqrt(mean_squared_error(y_training,pred_y))
+    if(result>tmp): 
+            result = tmp
+            best_y = pred_y
 
-# <codecell>
 
-ax = plt.subplot()
-ax.set_color_cycle(['blue','red'])
-ax.plot(y_training,label="actual")
-ax.plot(pred_y,label="predict")
-ax.legend()
-plt.show()
+# In[ ]:
 
-# <codecell>
+# ax = plt.subplot()
+# ax.set_color_cycle(['blue','red'])
+# ax.plot(y_training,label="actual")
+# ax.plot(pred_y,label="predict")
+# ax.legend()
+# plt.show()
+
+
+# In[ ]:
 
 theta = theta_in #0.06
-theta
+print "Ty le du doan " + result
+pkl.dump(theta,open('saveGenetic.p', 'wb'))
+# t = pkl.load(open('saveGenetic.p', 'rb'))
 
-# <codecell>
-print "Saving"
-pkl.dump(theta,open('save.p', 'wb'))
-t = pkl.load(open('save.p', 'rb'))
 
-# <codecell>
+# In[ ]:
+
 
 
