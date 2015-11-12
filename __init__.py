@@ -17,4 +17,7 @@ def get_training():
                  for t in np.arange(n_input,n_row)])
     print "y_training loading..."
     y_training = np.asarray(data[n_input:n_row])
-    return X_training*100, y_training*100
+    n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*400,289*410)])
+    print "y_test..."
+    n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)])
+    return X_training*100, y_training*100,n_sample2*100,n_test2*100
