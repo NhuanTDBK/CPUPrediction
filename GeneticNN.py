@@ -26,15 +26,15 @@ from __init__ import *
 
 #Init data training
 print "Reading file......"
-X_training, y_training = get_training()
+X_training, y_training,n_sample2,n_test2 = get_training()
 if(X_training.shape[0]!=y_training.shape[0]):
     print "X_training shape must match y_training shape"
 print "Generate X_test and y_test"
 n_input = 11
 print "X_test..."
-n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*400,289*410)])
+#n_sample2 = np.asarray([[raw_data.ix[t-i][4] for i in range(1,n_input)] for t in np.arange (289*400,289*410)])
 print "y_test..."
-n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)])
+#n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)])
 print "Multi Layer Perceptron..."
 parameter = pkl.load(open('saveGenetic.p', 'rb'))
 #Build layer for MLP
@@ -56,7 +56,7 @@ net1 = NeuralNet(
 #
 print "Training time!!!!!....."
 net1.fit(X_training,y_training)
-net1.save_params_to("saveNeuralNetwork.tdn")
+net1.save_params_to("saveNeuralNetworkv2.tdn")
 print "Score rate = "
 print net1.score(n_sample2,n_test2)
 print net1.predict(n_sample2)[0:2]

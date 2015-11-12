@@ -10,7 +10,7 @@ import theano
 import lasagne as ls
 from theano import tensor as T
 from lasagne.layers import InputLayer, DenseLayer
-from lasagne.updates import nesterov_momentum
+from lasagne.updates import nesterov_momentum,sgd
 from lasagne.nonlinearities import rectify
 from nolearn.lasagne import NeuralNet
 from __init__ import *
@@ -34,7 +34,7 @@ net1 = NeuralNet(
     layers=network,
     # optimization method:
     update=nesterov_momentum,
-    update_learning_rate=0.01,
+    update_learning_rate=0.0001,
     update_momentum=0.9,
     regression=True,  # flag to indicate we're dealing with regression problem
     max_epochs=400,  # we want to train this many epochs

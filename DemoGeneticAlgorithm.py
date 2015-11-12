@@ -20,7 +20,7 @@ from __init__ import *
 # In[2]:
 
 params = [100, 0.3, 250,10,20]
-X_training, y_training = get_training()
+X_training, y_training,x_test,y_test = get_training()
 # init pop size, mut rate, number of generation, chromoesome length, winner per gen]
 fan_in = fan_out = 10
 
