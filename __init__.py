@@ -8,7 +8,7 @@ from sknn.platform import cpu64
 raw_data = pd.read_csv("tpds-2012-workload.csv");
 def get_training():
 #     n_row = 578 
-    n_row = raw_data.shape[0]
+    n_row = 200
     n_input = 10
     data = raw_data["Utilization"]
     print "Generate X_traing, y_traing"
