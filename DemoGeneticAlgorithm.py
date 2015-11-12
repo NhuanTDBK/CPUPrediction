@@ -26,10 +26,7 @@ fan_in = fan_out = 10
 
 
 # In[ ]:
-
-
-
-
+print "Initialize GA class"
 # In[6]:
 
 class GA:
@@ -79,10 +76,13 @@ class GA:
 
 ga = GA(raw_data,params,fan_in,fan_out)
 result = 1
+print "Training time..."
 for ty in range(0,10000):
+    print "Fiting time..."
     theta_in = ga.fit(X_training,y_training)
     pred_y = ga.sigmoid(np.dot(X_training,theta_in.T))
     tmp = sqrt(mean_squared_error(y_training,pred_y))
+    print i, tmp
     if(result>tmp): 
             result = tmp
             best_y = pred_y
