@@ -8,7 +8,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as pl
-import pickle
+import pickle as pkl
 import sklearn
 from sklearn.metrics import mean_squared_error
 import theano
@@ -38,8 +38,8 @@ n_test2 =  np.asarray([raw_data.ix[t][4] for t in np.arange(289*400+1,289*410+1)
 print "Multi Layer Perceptron..."
 parameter = pkl.load(open('saveGenetic.p', 'rb'))
 #Build layer for MLP
-l_in = ls.layers.InputLayer(shape=(None,10),input_var=None)
-l_hidden = ls.layers.DenseLayer(l_in,num_units=10,nonlinearity=ls.nonlinearities.rectify,W=np.reshape(parameter,[10,10]))
+l_in = ls.layers.InputLayer(shape=(None,10),input_var=None,W=parameter.T)
+l_hidden = ls.layers.DenseLayer(l_in,num_units=10,nonlinearity=ls.nonlinearities.rectify)
 network = l_out = ls.layers.DenseLayer(l_hidden,num_units=1)
 print "Neural network initialize"
 #Init Neural net

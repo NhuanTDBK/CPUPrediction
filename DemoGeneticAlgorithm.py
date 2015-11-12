@@ -77,12 +77,11 @@ class GA:
 ga = GA(raw_data,params,fan_in,fan_out)
 result = 1
 print "Training time..."
-for ty in range(0,10000):
-    print "Fiting time..."
+for ty in range(0,10):
     theta_in = ga.fit(X_training,y_training)
     pred_y = ga.sigmoid(np.dot(X_training,theta_in.T))
     tmp = sqrt(mean_squared_error(y_training,pred_y))
-    print i, tmp
+    print ty, tmp
     if(result>tmp): 
             result = tmp
             best_y = pred_y
@@ -101,7 +100,8 @@ for ty in range(0,10000):
 # In[ ]:
 
 theta = theta_in #0.06
-print "Ty le du doan " + result
+print "Ty le du doan "
+print result
 pkl.dump(theta,open('saveGenetic.p', 'wb'))
 # t = pkl.load(open('saveGenetic.p', 'rb'))
 
