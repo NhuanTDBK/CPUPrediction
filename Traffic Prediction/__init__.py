@@ -5,13 +5,12 @@ import sklearn
 from sknn.mlp import Regressor, Layer
 import pickle
 from sknn.platform import cpu64
-raw_data = pd.read_csv("workload.csv");
+raw_data = pd.read_csv("ita_public_tools/output/data.csv");
 def get_training():
  #   n_row = 578 
  # group du lieu
-    
+    data = raw_data.groupby('Timestamp').count()["Timestamp"]
     n_input = 10
-    data = raw_data["Utilization"]
     n_row = data.shape[0]
     print "Generate X_traing, y_traing"
     print "X_training loading..."
