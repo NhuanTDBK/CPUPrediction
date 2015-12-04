@@ -26,7 +26,7 @@ print "X_test..."
 print "Multi Layer Perceptron..."
 #Build layer for MLP
 l_in = ls.layers.InputLayer(shape=(None,10),input_var=None)
-l_hidden = ls.layers.DenseLayer(l_in,num_units=10,nonlinearity=ls.nonlinearities.rectify)
+l_hidden = ls.layers.DenseLayer(l_in,num_units=15,nonlinearity=ls.nonlinearities.sigmoid)
 network = l_out = ls.layers.DenseLayer(l_hidden,num_units=1)
 print "Neural network initialize"
 #Init Neural net
@@ -34,7 +34,7 @@ net1 = NeuralNet(
     layers=network,
     # optimization method:
     update=nesterov_momentum,
-    update_learning_rate=0.0001,
+    update_learning_rate=0.001,
     update_momentum=0.9,
     regression=True,  # flag to indicate we're dealing with regression problem
     max_epochs=400,  # we want to train this many epochs

@@ -32,6 +32,9 @@ store["conn"] = data
 
 
 # In[ ]:
-
-
+raw_data_name = "ita_public_tools/output/dataTest.csv"
+raw_data = pd.read_csv(raw_data_name)
+store = HDFStore("storeTraffic.h5")
+data = raw_data.groupby('Timestamp').count()["Timestamp"]
+store["connTest"] = data
 
