@@ -103,9 +103,8 @@ void ReadLog()
 	  }
 	}
 
-      fprintf(stdout,"%u, %u, %u, %u, %d, %d, %d, %d\n", 
-	      R->timestamp, R->clientID, R->objectID, R->size,
-	      (int)R->method,(int)R->status,(int)R->type,(int)R->server);
+      fprintf(stdout,"%u\n", 
+	      R->timestamp);
 
       /* read the next request */
       value = fread(&BER, sizeof(struct request), 1, stdin);
